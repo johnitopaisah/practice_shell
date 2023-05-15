@@ -5,6 +5,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 
 int _putchar(char c);
@@ -14,6 +16,7 @@ char **tok_parsing(char *lineptr, char *lineptr_copy);
 void execmd(char **argv);
 void free_mem(char **argv, char *lineptr, char *lineptr_copy);
 char *copy_func(char *lineptr);
-
+char *get_location(char *command);
+char *path_help(char *path, char *command);
 
 #endif /* MAIN_H */
