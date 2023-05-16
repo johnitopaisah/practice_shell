@@ -8,6 +8,8 @@
 void execmd(char **argv)
 {
 	char *command = NULL, *actual_command = NULL;
+	pid_t child_proc;
+	int status;
 
 	if (argv)
 	{
@@ -20,10 +22,22 @@ void execmd(char **argv)
 		 */
 		actual_command = get_location(command);
 
-		/* execute the command with execve */
-		if (execve(actual_command, argv, NULL) == -1)
+		/* creating a child process to handle the execution of command separately */
+		child_proc = fork();
+		if (child_proc == -1)
 		{
-			perror("Error:");
+			free(argv);
+			exit(EXIT_FAILURE);
 		}
+		if (child_proc == 0)
+		{
+			/* execute the command with execve */
+			if (execve(actual_command, argv, NULL) == -1)
+			{
+				perror("Error:");
+			}
+		}
+		else
+			wait(&status);
 	}
 }
