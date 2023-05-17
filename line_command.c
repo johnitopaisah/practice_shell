@@ -17,7 +17,7 @@ char *line_command(void)
 	if (nchars_read == -1)
 	{
 		perror("Exiting Shell...\n");
-		exit(0);
+		exit(EXIT_FAILURE);
 	}
 
 	/* Handling EOF */
