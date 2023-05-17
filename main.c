@@ -22,12 +22,13 @@ int main(void)
 
 		argv = tok_parsing(lineptr, lineptr_copy);
 
-		handle_exit(argv);
-
-		execmd(argv);
-
+		if (strcmp(argv[0], "exit") == 0)
+			handle_exit(argv);
+		else if (strcmp(argv[0], "env") == 0)
+			handle_env();
+		else
+			execmd(argv);
 		free_mem(argv, lineptr, lineptr_copy);
 	}
-
 	return (0);
 }

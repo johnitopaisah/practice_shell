@@ -20,5 +20,6 @@ char *copy_func(char *lineptr);
 char *get_location(char *command);
 char *path_help(char *path, char *command);
 void handle_exit(char **argv);
+void handle_env();
 
 #endif /* MAIN_H */
