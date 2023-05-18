@@ -23,7 +23,7 @@ int main(void)
 		argv = tok_parsing(lineptr, lineptr_copy);
 
 		if (strcmp(argv[0], "exit") == 0)
-			handle_exit(argv);
+			handle_exit();
 		else if (strcmp(argv[0], "env") == 0)
 			handle_env();
 		else
