@@ -23,8 +23,12 @@ char *get_location(char *command)
 		{
 			return (command);
 		}
-
-		return (location);
+		/* check if the command is not a valid command */
+		if (location != NULL && strcmp(command, location) != 0)
+		{
+			return (location);
+		}
 	}
+
 	return (NULL);
 }
