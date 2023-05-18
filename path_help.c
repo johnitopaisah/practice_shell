@@ -29,6 +29,7 @@ char *path_help(char *path, char *command)
 		strcpy(file_path, path_token);
 		strcat(file_path, "/");
 		strcat(file_path, command);
+
 		/* check if the path exist, free the memory and return the path */
 		if (stat(file_path, &buff) == 0)
 		{
