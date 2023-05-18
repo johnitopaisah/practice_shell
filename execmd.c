@@ -17,27 +17,33 @@ void execmd(char **argv)
 		command = argv[0];
 
 		/**
-		 * generating the path to this command before
-		 * passing it to the execve function
-		 */
+		 * generating the path to this command */
 		actual_command = get_location(command);
 
-		/* creating a child process to handle the execution of command separately */
-		child_proc = fork();
-		if (child_proc == -1)
+		if (actual_command != NULL)
 		{
-			free(argv);
-			exit(EXIT_FAILURE);
-		}
-		if (child_proc == 0)
-		{
-			/* execute the command with execve */
-			if (execve(actual_command, argv, NULL) == -1)
+			/* creating a child process to handle the execution of command separately */
+			child_proc = fork();
+			if (child_proc == -1)
 			{
-				perror("Error:");
+				free(argv);
+				exit(EXIT_FAILURE);
 			}
+			if (child_proc == 0)
+			{	
+				/*printf("%s\n", actual_command);*/
+				/* execute the command with execve */
+				if (execve(actual_command, argv, NULL) == -1)
+				{
+					perror("Error:");
+				}
+			}
+			else
+				wait(&status);
 		}
 		else
-			wait(&status);
+		{
+			printf("%s: is not a valid command\n", command);
+		}
 	}
 }
