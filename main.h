@@ -19,7 +19,7 @@ void free_mem(char **argv, char *lineptr, char *lineptr_copy);
 char *copy_func(char *lineptr);
 char *get_location(char *command);
 char *path_help(char *path, char *command);
-void handle_exit(char **argv);
+void handle_exit(void);
 void handle_env();
 
 #endif /* MAIN_H */
