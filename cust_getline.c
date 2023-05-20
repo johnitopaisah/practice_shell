@@ -4,7 +4,7 @@ ssize_t cust_getline(char **lineptr, size_t *n, FILE *stream)
 {
 	static char buffer[1024];
 	static int position = 0;
-	static bytes_read = 0;
+	static int bytes_read = 0;
 	ssize_t line_length = 0, i;
 	char *line = NULL;
 
@@ -45,7 +45,7 @@ ssize_t cust_getline(char **lineptr, size_t *n, FILE *stream)
 			}
 			/* move buffer posion and increase line length */
 			position++;
-			line_length++
+			line_length++;
 		}
 	}
 }

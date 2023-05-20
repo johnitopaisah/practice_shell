@@ -16,10 +16,11 @@ char *line_command(void)
 	/* check if getline function failed or CTRL +D was entered */
 	if (nchars_read == -1)
 	{
-		perror("Exiting Shell...\n");
+		perror("Exiting...");
 		exit(EXIT_FAILURE);
 	}
-
+	if (lineptr == NULL)
+		return NULL;
 	/* Handling EOF */
 	while (lineptr[i])
 	{

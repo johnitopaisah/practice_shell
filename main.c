@@ -18,6 +18,11 @@ int main(void)
 			fflush(stdout);
 		}
 		lineptr = line_command();
+		/*if (lineptr == NULL)
+		{
+			start_prompt();
+			continue;
+		}*/
 		lineptr_copy = copy_func(lineptr);
 
 		argv = tok_parsing(lineptr, lineptr_copy);

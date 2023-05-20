@@ -21,5 +21,7 @@ char *get_location(char *command);
 char *path_help(char *path, char *command);
 void handle_exit(void);
 void handle_env();
+ssize_t cust_getline(char **lineptr, size_t *n, FILE *stream);
+
 
 #endif /* MAIN_H */
