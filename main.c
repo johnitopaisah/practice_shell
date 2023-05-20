@@ -17,12 +17,14 @@ int main(void)
 			start_prompt();
 			fflush(stdout);
 		}
+
 		lineptr = line_command();
-		/*if (lineptr == NULL)
-		{
-			start_prompt();
+		if (lineptr == NULL)
+			break;
+
+		if (strcmp(lineptr, "Enter") == 0)
 			continue;
-		}*/
+
 		lineptr_copy = copy_func(lineptr);
 
 		argv = tok_parsing(lineptr, lineptr_copy);

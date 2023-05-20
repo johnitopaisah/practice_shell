@@ -8,5 +8,5 @@
 void handle_exit(void)
 {
 	/* send a SIGTERM to the current processs */
-	kill(getpid(), SIGTERM);
+	exit(0);
 }

@@ -7,7 +7,7 @@
  */
 char *line_command(void)
 {
-	char *lineptr = NULL;
+	char *lineptr = NULL, *enter_key = "Enter";
 	size_t n = 0;
 	ssize_t nchars_read;
 	int i = 0;
@@ -16,11 +16,16 @@ char *line_command(void)
 	/* check if getline function failed or CTRL +D was entered */
 	if (nchars_read == -1)
 	{
-		perror("Exiting...");
-		exit(EXIT_FAILURE);
+		perror("Exiting...\n");
+		return (NULL);
 	}
-	if (lineptr == NULL)
-		return NULL;
+	if (nchars_read == 1)
+	{
+		/*perror("Exiting...");*/
+		free(lineptr);
+		return (enter_key);
+	}
+
 	/* Handling EOF */
 	while (lineptr[i])
 	{
